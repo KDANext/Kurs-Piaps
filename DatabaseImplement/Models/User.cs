@@ -12,7 +12,6 @@ namespace DatabaseImplement.Models
         public string Password { get; set; }
         [Required]
         public string Nickname { get; set; }
-        [Required]
         public int LocationId { get; set; }
         public virtual List<Person> Persons { get; set; }
         public virtual List<ItemUser> ItemsUser { get; set; }

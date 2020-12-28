@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using DatabaseImplement.Models;
+using System.Collections.Generic;
 
-namespace DatabaseImplement.Models
+namespace DatabaseImplement
 {
     public class ModelSave
     {

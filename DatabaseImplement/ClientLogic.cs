@@ -19,9 +19,11 @@ namespace DatabaseImplement
                 {
                     Encrypt(model);
                     User user = new User();
+                    context.Users.Add(user);
                     user.Login = model.Login;
                     user.Password = model.Password;
                     user.Nickname = model.Nickname;
+                    context.SaveChanges();
                 } catch
                 {
                     ExeptionController.ExeptionController.CrushSaveExeption();
@@ -34,7 +36,7 @@ namespace DatabaseImplement
             using (var context = new Database())
             {
                 Encrypt(model);
-                var element = context.Users.First(x => x.Login == model.Login && x.Password == model.Password);
+                var element = context.Users.FirstOrDefault(x => x.Login == model.Login && x.Password == model.Password);
                 if (element == null)
                 {
                     ExeptionController.ExeptionController.UncorrectCheckUserExeption();
