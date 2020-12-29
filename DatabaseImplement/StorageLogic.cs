@@ -27,8 +27,9 @@ namespace DatabaseImplement
                             personLogic.CreateOrUpdate(person);
                             SaveItem(person, itemPerson.Current);
                         }
-                        var element = context.Users.First(x=> x.Id == model.User.Id);
+                        var element = context.Users.First(x => x.Id == model.User.Id);
                         element.LocationId = model.User.LocationId;
+                        SaveItemUser(model.User.Id, model.InventoryUsers);
                         transaction.Commit();
                         context.SaveChanges();
                     } 
@@ -58,8 +59,8 @@ namespace DatabaseImplement
                             inventoryUsers[i].UserId = userId;
                             itemUserLogic.Create(inventoryUsers[i]);
                         }
-                        transaction.Commit();
                         context.SaveChanges();
+                        transaction.Commit();
                     }
                     catch
                     {
@@ -100,6 +101,7 @@ namespace DatabaseImplement
         public ModelSave Load(int userId)
         {
             ModelSave model = new ModelSave();
+            model.User.Id = userId ;
             model.InventoryUsers = itemUserLogic.Read(model.User.Id);
             personLogic.Read(model);
             foreach(var person in model.Persons)

@@ -20,6 +20,7 @@ namespace DatabaseImplement
                         elem.ItemCount = model.ItemCount;
                         elem.ItemId = model.ItemId;
                         elem.PersonId = model.PersonId;
+                        context.SaveChanges();
                     } catch
                     {
                         ExeptionController.ExeptionController.CrushSaveExeption();

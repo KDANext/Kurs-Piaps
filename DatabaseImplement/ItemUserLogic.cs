@@ -20,6 +20,7 @@ namespace DatabaseImplement
                     elem.ItemCount = model.ItemCount;
                     elem.ItemId = model.ItemId;
                     elem.UserId = model.UserId;
+                    context.SaveChanges();
                 }
                 catch
                 {
@@ -36,10 +37,10 @@ namespace DatabaseImplement
                 {
                     try
                     {
-                        var element = context.ItemPersons.FirstOrDefault(x => x.Id == model.Id);
+                        var element = context.ItemsUser.FirstOrDefault(x => x.Id == model.Id);
                         if (element != null)
                         {
-                            context.ItemPersons.Remove(element);
+                            context.ItemsUser.Remove(element);
                             context.SaveChanges();
                         }
                         transaction.Commit();

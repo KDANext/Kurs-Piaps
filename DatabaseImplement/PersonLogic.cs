@@ -18,7 +18,7 @@ namespace DatabaseImplement
                     try
                     {
                         Person elem = context.Persons.FirstOrDefault(rec => rec.Id != model.Id);
-                        if (model.Id.HasValue)
+                        if (model.Id.HasValue && model.Id != 0)
                         {
                             elem = context.Persons.FirstOrDefault(rec => rec.Id == model.Id);
                             if (elem == null)
@@ -34,6 +34,7 @@ namespace DatabaseImplement
                         elem.Armor = model.Armor;
                         elem.ClassName = model.ClassName;
                         elem.Damage = model.Damage;
+                        elem.UserId = model.UserId;
                         elem.Health = model.Health;
                         elem.Mana = model.Mana;
                         elem.ManaMax = model.ManaMax;                      
